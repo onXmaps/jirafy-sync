@@ -1,0 +1,50 @@
+name: Jirafy Sync
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v1.0.0
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Jirafy Changelog
+        id: changelog
+        uses: coltdorsey/jirafy-changelog@v1.0.0
+        with:
+          jiraHost: 'coltdorsey.atlassian.net'
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - run: npm install --production
+
+      - name: Jirafy Sync
+        id: jsync
+        uses: ./dist/index.js
+        with:
+          changelog: ${{ steps.changelog.outputs.changelog }}
+          jiraHost: 'coltdorsey.atlassian.net'
+          jiraUsername: ${{ secrets.JIRA_USERNAME }}
+          jiraToken: ${{ secrets.JIRA_TOKEN }}
+          myToken: ${{ secrets.GITHUB_TOKEN }}

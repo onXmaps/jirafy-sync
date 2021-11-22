@@ -1,0 +1,44 @@
+{
+  "name": "jirafy-sync",
+  "version": "0.0.1",
+  "description": "Sync Jira tickets and version based on a given changelog",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build ./index.js",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "precommit": "npm run format && npm run lint && npm run build && git add dist/",
+    "format-check": "prettier --check **/*.{js,yml,json}",
+    "format": "prettier --write **/*.{js,yml,json}",
+    "lint": "eslint ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coltdorsey/jirafy-sync.git"
+  },
+  "keywords": [
+    "Jira",
+    "Version",
+    "fixVersion",
+    "changelog",
+    "sync"
+  ],
+  "author": "Colt Dorsey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coltdorsey/jirafy-sync/issues"
+  },
+  "homepage": "https://github.com/coltdorsey/jirafy-sync#readme",
+  "devDependencies": {
+    "@vercel/ncc": "^0.32.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "jira-client": "^8.0.0"
+  }
+}
