@@ -61469,6 +61469,7 @@ async function run() {
   try {
     const myToken = core.getInput('myToken')
     const changelog = core.getInput('changelog')
+    var baseRef = ''
     const octokit = new github.getOctokit(myToken)
     const { owner, repo } = github.context.repo
     const regexp = /^[.A-Za-z0-9_-]*$/
