@@ -40,8 +40,7 @@ jobs:
       - run: npm install --production
 
       - name: Jirafy Sync
-        id: jsync
-        uses: ./dist/index.js
+        uses: ./
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
           jiraHost: 'coltdorsey.atlassian.net'
