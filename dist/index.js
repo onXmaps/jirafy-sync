@@ -61464,12 +61464,12 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186)
 const github = __nccwpck_require__(5438)
 const { createVersionAndUpdateFixVersions } = __nccwpck_require__(5912)
+var baseRef = ''
 
 async function run() {
   try {
     const myToken = core.getInput('myToken')
     const changelog = core.getInput('changelog')
-    var baseRef = ''
     const octokit = new github.getOctokit(myToken)
     const { owner, repo } = github.context.repo
     const regexp = /^[.A-Za-z0-9_-]*$/
