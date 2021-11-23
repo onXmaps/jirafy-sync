@@ -60868,7 +60868,7 @@ module.exports = {
 const JiraClient = __nccwpck_require__(6411)
 const fetch = __nccwpck_require__(467)
 const core = __nccwpck_require__(2186)
-const { parseChangelogForJiraTickets } = __nccwpck_require__(7772)
+const { parseChangelogForJiraTickets } = __nccwpck_require__(1904)
 const {
   jiraHost,
   packageName,
@@ -61072,14 +61072,6 @@ module.exports = {
   getProjectNameByTicket,
   getProjectIdByKey,
 }
-
-
-/***/ }),
-
-/***/ 7772:
-/***/ ((module) => {
-
-module.exports = eval("require")("./changelog");
 
 
 /***/ }),

@@ -1,7 +1,7 @@
 const JiraClient = require('jira-client')
 const fetch = require('node-fetch')
 const core = require('@actions/core')
-const { parseChangelogForJiraTickets } = require('./changelog')
+const { parseChangelogForJiraTickets } = require('./jira-helper')
 const {
   jiraHost,
   packageName,
