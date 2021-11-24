@@ -7,7 +7,7 @@ inputs:
     required: true
   jiraVersion:
     description: 'The Jira version & fix version to create & set'
-    required: false
+    required: true
   jiraHost:
     description: 'Jira host name (i.e coltdorsey.atlassian.net)'
     required: true
