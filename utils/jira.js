@@ -102,7 +102,7 @@ function getProjectNameByTicket(ticket) {
  * @param {Boolean} released
  * @returns {object} Success response || error & status code
  */
-function createVersion(
+async function createVersion(
   archived,
   releaseDate,
   name,
@@ -171,7 +171,7 @@ function createVersionAndUpdateFixVersions(changelog, version) {
       var projectId = await getProjectIdByKey(project)
 
       // Adding a hyperlink to version/release repo isn't supported, see https://community.atlassian.com/t5/Jira-discussions/Adding-a-confluence-link-in-a-Release-Version-description-field/td-p/622193
-      createVersion(
+      await createVersion(
         false,
         today(),
         version,
