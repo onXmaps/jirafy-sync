@@ -5,7 +5,7 @@ const jiraHost = core.getInput('jiraHost') || process.env.JIRA_HOST
 /**
  * Parses a given changelog for Jira tickets
  * @param {String} changelog
- * @returns {Array} Jira story(ies) parsed from the changelog. Removes duplicates.
+ * @returns {Array} Jira ticket(s) parsed from the changelog. Removes duplicates.
  */
 function parseChangelogForJiraTickets(changelog) {
   var tickets
@@ -36,8 +36,8 @@ function parseForWord(arr) {
       regex.lastIndex++
     }
 
-    m.map((story) => {
-      parsedWords.push(story)
+    m.map((word) => {
+      parsedWords.push(word)
     })
   }
   return parsedWords
