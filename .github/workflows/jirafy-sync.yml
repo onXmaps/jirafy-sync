@@ -34,6 +34,11 @@ jobs:
           draft: false
           prerelease: false
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Setup node
         uses: actions/setup-node@v2
         with:
