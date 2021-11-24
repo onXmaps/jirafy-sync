@@ -51,7 +51,7 @@ jobs:
         uses: ./
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
-          jiraVersion: ${{ github.event.release.tag_name }}
+          jiraVersion: ${{ github.ref_name }}
           jiraHost: 'coltdorsey.atlassian.net'
           jiraUsername: ${{ secrets.JIRA_USERNAME }}
           jiraToken: ${{ secrets.JIRA_TOKEN }}
