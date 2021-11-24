@@ -13,6 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      # Generate changelog optimized for referenced Jira Tickets from Pull Request titles
       - name: Jirafy Changelog
         id: changelog
         uses: coltdorsey/jirafy-changelog@v1.0.0
@@ -20,6 +21,7 @@ jobs:
           jiraHost: 'coltdorsey.atlassian.net'
           myToken: ${{ secrets.GITHUB_TOKEN }}
 
+      # Create a release
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
@@ -39,6 +41,7 @@ jobs:
 
       - run: npm install --production
 
+      # Sync the changelog with Jira projects / Tickets
       - name: Jirafy Sync
         uses: ./
         with:
