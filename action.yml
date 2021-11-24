@@ -1,5 +1,5 @@
 name: 'Jirafy Sync'
-description: 'Sync Jira tickets and version from a generated [Jirafy Changelog](https://github.com/marketplace/actions/jirafy-changelog)'
+description: 'Sync Jira tickets and version from a Jirafy Changelog (See actions/jirafy-changelog)'
 
 inputs:
   changelog:
