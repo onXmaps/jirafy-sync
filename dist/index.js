@@ -58586,14 +58586,10 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186)
 const { createVersionAndUpdateFixVersions } = __nccwpck_require__(5912)
-var baseRef
-var changelog
-var jiraVersion
-
 async function run() {
   try {
-    changelog = core.getInput('changelog')
-    jiraVersion = core.getInput('jiraVersion')
+    const changelog = core.getInput('changelog')
+    const jiraVersion = core.getInput('jiraVersion')
     const regexp = /^[.A-Za-z0-9_-]*$/
 
     if (!changelog) {
@@ -58604,15 +58600,12 @@ async function run() {
 
     if (!jiraVersion) {
       core.setFailed(
-        'jiraVersion property is required. Try setting the value to ${{ github.ref }}'
+        'jiraVersion property is required. Try setting the value to ${{ github.event.release.tag_name }}'
       )
-    } else {
-      baseRef = jiraVersion
-      core.info(`baseRef set to jiraVersion input: ${jiraVersion}`)
     }
 
-    if (!!baseRef && regexp.test(baseRef)) {
-      await syncChangelogToJira()
+    if (!!jiraVersion && regexp.test(jiraVersion)) {
+      await syncChangelogToJira(changelog, jiraVersion)
     } else {
       core.setFailed(
         'Branch names must contain only numbers, strings, underscores, periods, and dashes.'
@@ -58623,7 +58616,7 @@ async function run() {
   }
 }
 
-async function syncChangelogToJira() {
+async function syncChangelogToJira(changelog, jiraVersion) {
   try {
     core.info(`fixVersion is: ${fixVersion}`)
     core.info(`changelog is: ${changelog}`)
