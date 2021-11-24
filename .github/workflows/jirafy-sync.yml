@@ -50,4 +50,3 @@ jobs:
           jiraHost: 'coltdorsey.atlassian.net'
           jiraUsername: ${{ secrets.JIRA_USERNAME }}
           jiraToken: ${{ secrets.JIRA_TOKEN }}
-          myToken: ${{ secrets.GITHUB_TOKEN }}
