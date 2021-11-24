@@ -1,38 +1,28 @@
 const core = require('@actions/core')
-const github = require('@actions/github')
 const { createVersionAndUpdateFixVersions } = require('./utils/jira')
 var baseRef
+var changelog
+var jiraVersion
 
 async function run() {
   try {
-    const myToken = core.getInput('myToken')
-    const changelog = core.getInput('changelog')
-    const octokit = new github.getOctokit(myToken)
-    const { owner, repo } = github.context.repo
+    changelog = core.getInput('changelog')
+    jiraVersion = core.getInput('jiraVersion')
     const regexp = /^[.A-Za-z0-9_-]*$/
 
     if (!changelog) {
       core.setFailed(
-        'No changelog provided. Reference output from coltdorsey/jirafy-changelog@1.0.0'
+        'changelog property is required. Generate the changelog with github action coltdorsey/jirafy-changelog and reference the step output.'
       )
     }
 
-    if (!baseRef) {
-      const latestRelease = await octokit.rest.repos.getLatestRelease({
-        owner: owner,
-        repo: repo,
-      })
-
-      if (latestRelease) {
-        baseRef = latestRelease.data.tag_name
-        core.info(
-          `baseRef set to latestRelease: ${latestRelease.data.tag_name}`
-        )
-      } else {
-        const jiraVersion = core.getInput('jiraVersion')
-        baseRef = jiraVersion
-        core.info(`baseRef set to jiraVersion input: ${jiraVersion}`)
-      }
+    if (!jiraVersion) {
+      core.setFailed(
+        'jiraVersion property is required. Try setting the value to ${{ github.ref }}'
+      )
+    } else {
+      baseRef = jiraVersion
+      core.info(`baseRef set to jiraVersion input: ${jiraVersion}`)
     }
 
     if (!!baseRef && regexp.test(baseRef)) {
@@ -49,17 +39,12 @@ async function run() {
 
 async function syncChangelogToJira() {
   try {
-    const fixVersion = baseRef
-    const changelog = core.getInput('changelog')
-
     core.info(`fixVersion is: ${fixVersion}`)
     core.info(`changelog is: ${changelog}`)
 
-    createVersionAndUpdateFixVersions(changelog, fixVersion)
+    createVersionAndUpdateFixVersions(changelog, jiraVersion)
   } catch (err) {
-    core.setFailed(
-      `Could not create jira version(s) and / or update associated Jira tickets: ${err.message}`
-    )
+    core.setFailed(`Jirafy Sync failed: ${err.message}`)
     process.exit(0)
   }
 }
