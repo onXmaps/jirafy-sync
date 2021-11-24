@@ -34,6 +34,13 @@ jobs:
           draft: false
           prerelease: false
 
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - run: npm install --production
+
       # Sync the changelog with Jira projects / Tickets
       - name: Jirafy Sync
         uses: ./
