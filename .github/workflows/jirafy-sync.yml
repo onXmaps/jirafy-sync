@@ -16,7 +16,7 @@ jobs:
       # Generate changelog optimized for referenced Jira Tickets from Pull Request titles
       - name: Jirafy Changelog
         id: changelog
-        uses: coltdorsey/jirafy-changelog@v1.0.0
+        uses: coltdorsey/jirafy-changelog@v1.1.0
         with:
           jiraHost: 'coltdorsey.atlassian.net'
           myToken: ${{ secrets.GITHUB_TOKEN }}

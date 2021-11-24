@@ -9,7 +9,7 @@ This action requires a changelog as input. If the changelog has references to Ji
 
 - Next you'll need to generate a release. I recommend using [actions/actions/create-release@latest](https://github.com/actions/create-release).
 
-- Finally you'll want to sync the github release with a jira version using [Jirafy-Sync](https://github.com/coltdorsey/jirafy-sync#jirafy-sync) action. The `${{ github.ref }}` value is the tag that triggers the recommended workflow and should set as the input of `jiraVersion` property. The action will create the corresponding Jira project versions that don't already exist, as well as update the fix version of each ticket that was found in the given changelog.
+- Finally you'll want to sync the github release with a jira version using [Jirafy-Sync](https://github.com/coltdorsey/jirafy-sync#jirafy-sync) action. The `${{ github.ref_name }}` value is the tag that triggers the recommended workflow and should set as the input of `jiraVersion` property. The action will create the corresponding Jira project versions that don't already exist, as well as update the fix version of each ticket that was found in the given changelog.
 
 ```yaml
 name: Jirafy Sync
@@ -50,7 +50,7 @@ jobs:
         uses: coltdorsey/jirafy-sync@v2.0.0
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
-          jiraVersion: ${{ github.ref }}
+          jiraVersion: ${{ github.ref_name }}
           jiraHost: 'coltdorsey.atlassian.net'
           jiraUsername: ${{ secrets.JIRA_USERNAME }}
           jiraToken: ${{ secrets.JIRA_TOKEN }}
