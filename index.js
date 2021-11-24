@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
 const { createVersionAndUpdateFixVersions } = require('./utils/jira')
-var baseRef = ''
+var baseRef
 
 async function run() {
   try {
@@ -13,7 +13,7 @@ async function run() {
 
     if (!changelog) {
       core.setFailed(
-        'No changelog provided. Reference output from coltdorsey/jirafy-changelog@1.0.0',
+        'No changelog provided. Reference output from coltdorsey/jirafy-changelog@1.0.0'
       )
     }
 
@@ -25,16 +25,21 @@ async function run() {
 
       if (latestRelease) {
         baseRef = latestRelease.data.tag_name
+        core.info(
+          `baseRef set to latestRelease: ${latestRelease.data.tag_name}`
+        )
       } else {
-        baseRef = core.getInput('jiraVersion')
+        const jiraVersion = core.getInput('jiraVersion')
+        baseRef = jiraVersion
+        core.info(`baseRef set to jiraVersion input: ${jiraVersion}`)
       }
     }
 
     if (!!baseRef && regexp.test(baseRef)) {
-      syncChangelogToJira()
+      await syncChangelogToJira()
     } else {
       core.setFailed(
-        'Branch names must contain only numbers, strings, underscores, periods, and dashes.',
+        'Branch names must contain only numbers, strings, underscores, periods, and dashes.'
       )
     }
   } catch (error) {
@@ -53,7 +58,7 @@ async function syncChangelogToJira() {
     createVersionAndUpdateFixVersions(changelog, fixVersion)
   } catch (err) {
     core.setFailed(
-      `Could not create jira version(s) and / or update associated Jira tickets: ${err.message}`,
+      `Could not create jira version(s) and / or update associated Jira tickets: ${err.message}`
     )
     process.exit(0)
   }
