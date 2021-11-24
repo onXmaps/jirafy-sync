@@ -38,8 +38,6 @@
     "prettier-eslint": "^13.0.0"
   },
   "dependencies": {
-    "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0",
     "jira-client": "^8.0.0"
   }
 }
