@@ -36,7 +36,7 @@ jobs:
 
       # Sync the changelog with Jira projects / Tickets
       - name: Jirafy Sync
-        uses: coltdorsey/jirafy-sync@1.0.1
+        uses: coltdorsey/jirafy-sync@v1.0.1
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
           jiraHost: 'coltdorsey.atlassian.net'
