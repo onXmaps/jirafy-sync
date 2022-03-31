@@ -7,6 +7,7 @@ const badKey = 'arglebargle'
 describe('Jirafy Sync', () => {
   context('Jira', () => {
     it('getProjectIdByKey - Ensure jira project keys are always uppercase', async () => {
+      console.log(`lowercase key: ${key.toLowerCase()}`)
       var resp = await jira.getProjectIdByKey(key.toLowerCase())
       chai.assert.equal(resp, '10002')
     })
@@ -17,7 +18,8 @@ describe('Jirafy Sync', () => {
     })
 
     it('getProjectIdByKey - success', async () => {
-      var resp = await jira.getProjectIdByKey('jsync')
+      console.log(`key is ${key}`)
+      var resp = await jira.getProjectIdByKey(key)
       chai.assert.equal(resp, '10002')
     })
   })
