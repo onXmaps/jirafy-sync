@@ -5,6 +5,10 @@ on: [pull_request, push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+      JIRA_PASSWORD: ${{ secrets.JIRA_TOKEN }}
+      JIRA_HOST: 'coltdorsey.atlassian.net' 
 
     steps:
       - uses: actions/checkout@v3
@@ -23,4 +27,4 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-      - run: JIRA_USERNAME=${{ secrets.JIRA_USERNAME }} JIRA_PASSWORD=${{ secrets.JIRA_TOKEN }} JIRA_HOST='coltdorsey.atlassian.net' npm test
+      - run: npm test
