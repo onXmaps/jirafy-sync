@@ -16,13 +16,13 @@
     "url": "git+https://github.com/coltdorsey/jirafy-sync.git"
   },
   "keywords": [
-    "Jira",
-    "Version",
+    "jira",
+    "version",
     "fixVersion",
     "changelog",
     "sync"
   ],
-  "author": "Colt Dorsey",
+  "author": "onXmaps",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/coltdorsey/jirafy-sync/issues"
