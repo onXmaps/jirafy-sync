@@ -4,7 +4,17 @@ const chai = require('chai')
 const key = 'JSYNC'
 const badKey = 'arglebargle'
 
+before(()=>{
+  require('dotenv').config()
+})
+
 describe('Jirafy Sync', () => {
+  context('Env vars', () => {
+    it('check jira host', () => {
+      console.log(process.env.JIRA_HOST)
+    })
+  })
+  
   context('Jira', () => {
     it('getProjectIdByKey - Ensure jira project keys are always uppercase', async () => {
       console.log(`TEST 1: lowercase key: ${key.toLowerCase()}`)

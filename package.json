@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coltdorsey/jirafy-sync.git"
+    "url": "git+https://github.com/onXmaps/jirafy-sync.git"
   },
   "keywords": [
     "jira",
@@ -25,9 +25,9 @@
   "author": "onXmaps",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/coltdorsey/jirafy-sync/issues"
+    "url": "https://github.com/onXmaps/jirafy-sync/issues"
   },
-  "homepage": "https://github.com/coltdorsey/jirafy-sync#readme",
+  "homepage": "https://github.com/onXmaps/jirafy-sync#readme",
   "devDependencies": {
     "@vercel/ncc": "0.33.0",
     "chai": "^4.3.6",
