@@ -22,3 +22,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+      with: 
+          jiraHost: 'coltdorsey.atlassian.net'
+          jiraUsername: ${{ secrets.JIRA_USERNAME }}
+          jiraToken: ${{ secrets.JIRA_TOKEN }}
