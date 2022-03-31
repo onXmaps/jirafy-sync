@@ -23,4 +23,4 @@ jobs:
 
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm test
+      - run: JIRA_USERNAME=${{ secrets.JIRA_USERNAME }} JIRA_PASSWORD=${{ secrets.JIRA_TOKEN }} JIRA_HOST='coltdorsey.atlassian.net' npm test
