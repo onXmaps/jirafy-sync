@@ -7,7 +7,9 @@ async function run() {
     const regexp = /^[.A-Za-z0-9_-]*$/
 
     if (!changelog) {
-      core.setFailed('changelog property is required. Generate the changelog with github action coltdorsey/jirafy-changelog and reference the step output.')
+      core.setFailed(
+        'changelog property is required. Generate the changelog with github action onXmaps/jirafy-changelog and reference the step output.'
+      )
     }
 
     if (!jiraVersion) {
