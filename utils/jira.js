@@ -67,7 +67,6 @@ function getVersions(project) {
  * @returns {String} A given jira key's corresponding project id
  */
 function getProjectIdByKey(key) {
-    console.log(`jira client: ${JSON.stringify(jira)}`)
   return jira
     .getProject(key.toUpperCase())
     .then((response) => {
