@@ -11,9 +11,7 @@ before(() => {
 describe('Jirafy Sync', () => {
   context('Jira', () => {
     it('getProjectIdByKey - Ensure jira project keys are always uppercase', async () => {
-      console.log(`TEST 1: lowercase key: ${key.toLowerCase()}`)
       var resp = await jira.getProjectIdByKey(key.toLowerCase())
-      console.log(`TEST 1 resp: ${resp}`)
       chai.assert.equal(resp, '10002')
     })
 
@@ -23,9 +21,7 @@ describe('Jirafy Sync', () => {
     })
 
     it('getProjectIdByKey - success', async () => {
-      console.log(`TEST 2: key is ${key}`)
       var resp = await jira.getProjectIdByKey(key)
-      console.log(`TEST 2 resp: ${resp}`)
       chai.assert.equal(resp, '10002')
     })
   })
