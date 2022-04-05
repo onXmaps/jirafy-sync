@@ -58594,7 +58594,7 @@ async function run() {
 
     if (!changelog) {
       core.setFailed(
-        'changelog property is required. Generate the changelog with github action coltdorsey/jirafy-changelog and reference the step output.'
+        'changelog property is required. Generate the changelog with github action onXmaps/jirafy-changelog and reference the step output.'
       )
     }
 
