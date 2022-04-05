@@ -18,7 +18,7 @@ jobs:
         run: |
           touch .env
           echo JIRA_USERNAME=${{ secrets.JIRA_USERNAME }} >> .env
-          echo JIRA_PASSWORD=${{ secrets.JIRA_TOKEN }} >> .env
+          echo JIRA_TOKEN=${{ secrets.JIRA_TOKEN }} >> .env
           echo JIRA_HOST='coltdorsey.atlassian.net' >> .env
 
       - run: npm ci
