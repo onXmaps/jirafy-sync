@@ -10,8 +10,10 @@ before(()=>{
 
 describe('Jirafy Sync', () => {
   context('Env vars', () => {
-    it('check jira host', () => {
+    it('check vars', () => {
       console.log(process.env.JIRA_HOST)
+      console.log(process.env.JIRA_USERNAME)
+      console.log(process.env.JIRA_TOKEN)
     })
   })
   
