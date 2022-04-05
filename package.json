@@ -1,12 +1,12 @@
 {
   "name": "jirafy-sync",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Sync Jira tickets and version based on a given changelog",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build ./index.js",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "precommit": "npm run format && npm run lint && npm run build && git add dist/",
+    "precommit": "npm run format && npm run build && git add dist/",
     "format-check": "prettier --check **/*.{js,yml,json}",
     "format": "prettier --write **/*.{js,yml,json}",
     "test": "mocha"

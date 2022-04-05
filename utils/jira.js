@@ -106,7 +106,6 @@ async function createVersion(archived, releaseDate, name, description, projectId
     projectId: projectId,
     released: released || false,
   }
-  console.log('jira: ', jira)
 
   return jira
     .createVersion(version)
