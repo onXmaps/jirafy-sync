@@ -13,17 +13,13 @@ async function run() {
     }
 
     if (!jiraVersion) {
-      core.setFailed(
-        'jiraVersion property is required. Try setting the value to ${{ github.event.release.tag_name }}'
-      )
+      core.setFailed('jiraVersion property is required. Try setting the value to ${{ github.event.release.tag_name }}')
     }
 
     if (!!jiraVersion && regexp.test(jiraVersion)) {
       await syncChangelogToJira(changelog, jiraVersion)
     } else {
-      core.setFailed(
-        'Branch names must contain only numbers, strings, underscores, periods, and dashes.'
-      )
+      core.setFailed('Branch names must contain only numbers, strings, underscores, periods, and dashes.')
     }
   } catch (error) {
     core.setFailed(error.message)
