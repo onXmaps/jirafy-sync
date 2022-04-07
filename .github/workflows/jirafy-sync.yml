@@ -42,7 +42,7 @@ jobs:
 
       # Sync the changelog with Jira projects / Tickets
       - name: Jirafy Sync
-        uses: ../dist/index.js
+        uses: ./
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
           jiraVersion: ${{ github.ref_name }}
