@@ -56,7 +56,7 @@ jobs:
           prerelease: false
 
       - name: Jirafy Sync
-        uses: dist/index.js
+        uses: onXmaps/jirafy-sync@v2.0.1
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
           jiraVersion: ${{ github.ref_name }}
