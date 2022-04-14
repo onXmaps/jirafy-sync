@@ -38,7 +38,7 @@ Updates Jira ticket(s) fixVersion property
 ## Recommended github workflow
 - Jirafy Sync works best if [Jirafy Changelog](https://github.com/marketplace/actions/jirafy-changelog) github action generates the changelog. The changelog can be generated given there is already at least one github release in your repository.
 
-- Next you'll need to generate a release. I recommend using [actions/actions/create-release@latest](https://github.com/actions/create-release).
+- Next you'll need to generate a release. I recommend using [actions/create-release@latest](https://github.com/actions/create-release).
 
 - Finally you'll want to sync the github release with a jira version using [Jirafy Sync](https://github.com/onXmaps/jirafy-sync#jirafy-sync) action. The `${{ github.ref_name }}` value is the tag that triggers the recommended workflow and should set as the input of `jiraVersion` property. The action will create the corresponding Jira project versions that don't already exist, as well as update the fix version of each ticket that was found in the given changelog.
 
