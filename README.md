@@ -62,7 +62,7 @@ jobs:
         id: changelog
         uses: onXmaps/jirafy-changelog@v1.1.0
         with:
-          jiraHost: 'coltdorsey.atlassian.net'
+          jiraHost: 'example.atlassian.net'
           myToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release
@@ -82,7 +82,7 @@ jobs:
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
           jiraVersion: ${{ github.ref_name }}
-          jiraHost: 'coltdorsey.atlassian.net'
+          jiraHost: 'example.atlassian.net'
           jiraUsername: ${{ secrets.JIRA_USERNAME }}
           jiraToken: ${{ secrets.JIRA_TOKEN }}
 ```
