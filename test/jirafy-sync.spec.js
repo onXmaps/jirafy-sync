@@ -2,7 +2,7 @@ require('dotenv').config()
 const jira = require('../utils/jira')
 const { parseChangelogForJiraTickets } = require('../utils/jira-helper')
 const chai = require('chai')
-const key = 'JSYNC'
+const key = 'SDET'
 const badKey = 'arglebargle'
 
 describe('Jirafy Sync', () => {
@@ -19,7 +19,7 @@ describe('Jirafy Sync', () => {
   context('Jira Projects', () => {
     it('Ensure jira project keys are always uppercase', async () => {
       var resp = await jira.getProjectIdByKey(key.toLowerCase())
-      chai.assert.equal(resp, '10002')
+      chai.assert.equal(resp, process.env.PROJECT_ID)
     })
 
     it('Ensure project retrieval error message', async () => {
@@ -29,7 +29,7 @@ describe('Jirafy Sync', () => {
 
     it('Ensure project retrieval success', async () => {
       var resp = await jira.getProjectIdByKey(key)
-      chai.assert.equal(resp, '10002')
+      chai.assert.equal(resp, process.env.PROJECT_ID)
     })
   })
 
