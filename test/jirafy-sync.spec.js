@@ -2,7 +2,7 @@ require('dotenv').config()
 const jira = require('../utils/jira')
 const { parseChangelogForJiraTickets } = require('../utils/jira-helper')
 const chai = require('chai')
-const key = 'JSYNC'
+const key = 'SDET'
 const badKey = 'arglebargle'
 
 describe('Jirafy Sync', () => {
