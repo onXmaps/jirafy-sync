@@ -19,15 +19,13 @@ describe('Jirafy Sync', () => {
   * [`ce73404`](http://github.com/onXmaps/jirafy-changelog/commit/ce73404ce5cb38c9c6a86b6188a790e76a7575fb)  [`SDET-486`](https://coltdorsey.atlassian.net/browse/SDET-486) Updating references - Merge pull request #22 from onXmaps/colt/update-references'
 
   before(() => {
-    core.setSecret('projectId')
-    projectId = process.env.PROJECT_ID
+    projectId = core.getInput('PROJECT_ID') || process.env.PROJECT_ID
   })
 
   context('Jira Projects', () => {
     it('Ensure jira project keys are always uppercase', async () => {
       var resp = await jira.getProjectIdByKey(key.toLowerCase())
-      chai.assert.equal(resp, process.env.PROJECT_ID || projectId)
-      core.set
+      chai.assert.equal(resp, projectId)
     })
 
     it('Ensure project retrieval error message', async () => {
@@ -37,7 +35,7 @@ describe('Jirafy Sync', () => {
 
     it('Ensure project retrieval success', async () => {
       var resp = await jira.getProjectIdByKey(key)
-      chai.assert.equal(resp, process.env.PROJECT_ID || projectId)
+      chai.assert.equal(resp, projectId)
     })
   })
 

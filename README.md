@@ -60,7 +60,7 @@ jobs:
 
       - name: Jirafy Changelog
         id: changelog
-        uses: onXmaps/jirafy-changelog@v1.1.0
+        uses: onXmaps/jirafy-changelog@v1.2.0
         with:
           jiraHost: 'example.atlassian.net'
           myToken: ${{ secrets.GITHUB_TOKEN }}

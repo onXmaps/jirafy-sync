@@ -9,6 +9,7 @@ jobs:
       JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
       JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
       JIRA_HOST: ${{ secrets.JIRA_HOST }}
+      PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     steps:
       - uses: actions/checkout@v3
