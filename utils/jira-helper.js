@@ -11,7 +11,7 @@ function parseChangelogForJiraTickets(changelog) {
   var tickets
 
   try {
-    const regex = /([A-Za-z0-9]+-\d+)/g
+    const regex = /([A-Za-z0-9]+-\d+)(?=`)/g
     tickets = [...changelog.matchAll(regex)]
   } catch (error) {
     core.setFailed(error.message)
