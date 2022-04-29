@@ -15,9 +15,9 @@ jobs:
       # Generate changelog optimized for referenced Jira Tickets from Pull Request titles
       - name: Jirafy Changelog
         id: changelog
-        uses: onXmaps/jirafy-changelog@v1.1.0
+        uses: onXmaps/jirafy-changelog@v1.2.0
         with:
-          jiraHost: 'coltdorsey.atlassian.net'
+          jiraHost: ${{ secrets.JIRA_HOST }}
           myToken: ${{ secrets.GITHUB_TOKEN }}
 
       # Create a release
@@ -46,6 +46,6 @@ jobs:
         with:
           changelog: ${{ steps.changelog.outputs.changelog }}
           jiraVersion: ${{ github.ref_name }}
-          jiraHost: 'coltdorsey.atlassian.net'
+          jiraHost: ${{ secrets.JIRA_HOST }}
           jiraUsername: ${{ secrets.JIRA_USERNAME }}
           jiraToken: ${{ secrets.JIRA_TOKEN }}
